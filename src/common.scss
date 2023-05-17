@@ -39,3 +39,39 @@
 		text-decoration: none;
 	}
 }
+
+
+form.contact {
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
+
+	label {
+		margin-bottom: 0.15em;
+	}
+
+	input + label {
+		margin-top: 0.85em;
+	}
+
+	input[type='text'],
+	input[type='email'],
+	textarea {
+		padding:     0.5em;
+	}
+
+	textarea {
+		width:       100%;
+		min-width:   100%;
+		max-width:   100%;
+		font-family: inherit;
+		flex-grow:   1;
+	}
+
+	button {
+		width:      fit-content;
+		align-self: end;
+		margin-top: 0.75em;
+		padding:    0.25em;
+	}
+}
