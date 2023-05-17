@@ -1,0 +1,41 @@
+---
+stylesheet: /packages.css
+---
+
+{% macro packageContent(package=None, heading_level=1) %}
+	{% set current_url = page.url %}
+	{% set package_url = page.url %}
+
+	{% if package %}
+		{% set title = package.title %}
+		{% set price  = package.price  %}
+		{% set summaryContent = package.summaryContent %}
+		{% set package_url = package.page.url %}
+	{% endif %}
+
+	<h{{ heading_level }}>
+	{% if current_url != package_url %}<a href="{{ package_url | url }}">{% endif %}
+		{{ title }}
+	{% if current_url != package_url %}</a>{% endif %}
+	</h{{ heading_level }}>
+
+	<h{{ heading_level+1 }}>{{ price  }}</h{{ heading_level+1 }}>
+
+	{{ summaryContent | safe }}
+
+	{{ templateContent | safe }}
+{% endmacro %}
+
+{% macro packagePanel (package=None, heading_level=3) %}
+  <div class="package">
+    {{ packageContent(package, heading_level = 3) | safe }}
+  </div>
+{% endmacro %}
+
+{% extends 'base.njk' %}
+{% block head %}
+{% endblock %}
+
+{% block main %}
+  {{ packageContent(None, 1) | safe }}
+{% endblock %}

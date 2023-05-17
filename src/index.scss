@@ -1,0 +1,402 @@
+@mixin panel-shadow {
+	// background: #fff0;
+	// box-shadow:
+	// 	0px 10px 20px #0008,
+	// 	inset 0px 4px 20px 10px #fff8;
+
+	box-shadow: 0px 10px 20px #0008;
+}
+
+@mixin glass {
+	background: transparent;
+	backdrop-filter:
+		brightness(1.5)
+		blur(8px) ;
+
+	box-shadow:
+		inset 4px 4px 30px 4px #fff2 ;
+}
+
+@mixin glass-white {
+	backdrop-filter:
+		brightness(2.0)
+		saturate(0.9)
+		blur(30px) ;
+
+	background: #fff4;
+}
+
+main {
+	scroll-snap-type: y proximity;
+	section {
+		scroll-snap-align: start;
+	}
+}
+
+#site-header {
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	box-shadow: 0 1px 0px #000;
+}
+
+#fold {
+	background: #001;
+	background: url('/static/sameer-srivastava-M9kwG0fat3o-unsplash.webp');
+	background-position: bottom;
+	background-size: cover;
+	color: white;
+
+	min-height: 120vh;
+
+	font-size: 0.8em;
+
+	z-index: 2;
+	position: relative;
+
+
+	padding: 2rem 32px;
+	@media (max-width: 400px) {
+		padding: 2rem 16px;
+	}
+
+	&> div {
+		position: sticky;
+		top: 20vh;
+		left: 0;
+
+		margin: 20vh 32px;
+		@media (max-width: 800px) {
+			margin: 20vh 16px;
+		}
+
+
+		h1, h2, p {
+			@include glass;
+			padding: 2rem;
+			padding-left: 2rem;
+			padding-right: 1rem;
+			color: white;
+
+			// border: 1px solid #fff4;
+			border-radius: 18px 0;
+
+			// background:
+			//	 linear-gradient(120deg, #ffff 80%, #fff0 80%, #fff0, #fff0 83%, #ffff 83%, #ffff 83%, #ffff 83%, #fff0 85%);
+		}
+
+		&>*:nth-child(1) {
+			// margin-right: 0rem;
+			max-width: 50rem;
+			font-size: 1.8rem;
+			@media (max-width: 400px) {
+				padding: 0.85rem;
+				padding-right: 8rem;
+				width: fit-content;
+				margin-left: -16px;
+			}
+		}
+
+		&>*:nth-child(2) {
+			// margin-right: 8rem;
+			// color: #041;
+			max-width: 40rem;
+			color: #082;
+			font-style: italic;
+			@media (max-width: 400px) {
+				font-size: 1.5em;
+				padding: 0.75rem;
+				margin-left: -16px;
+			}
+		}
+
+		&>*:nth-child(3) {
+			position: relative;
+			// margin-right: 16rem;
+			max-width: 30rem;
+			font-size: 1.1rem;
+			a, a:visited { color: #8cd; }
+		}
+	}
+
+	.attribution {
+		position: absolute;
+		right: 20px;
+		bottom: -8rem;
+		color: white;
+		font-size: 0.75em;
+
+		a, a:visited {
+			color: lightblue;
+		}
+	}
+}
+
+body > section {
+	margin: 0 auto;
+	max-width: 50ch;
+}
+
+#how-it-works {
+	// display: flex;
+	// flex-direction: column;
+	// align-items: center;
+	
+	min-height: 100vh;
+
+	background: linear-gradient(#0100 80%, #0234);
+	background-attachment: fixed;
+	// padding-top:    3em;
+	padding-bottom: 4em;
+
+	&> div {
+		@include panel-shadow;
+		// max-width: 60ch;
+
+		@include glass;
+		background: #263d;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		color: white;
+		padding: 6em 2em;
+		width: 100%;
+
+		padding: 6em 2em;
+
+		& * {
+			text-align: left;
+			width: min(100%, 20rem);
+		}
+	}
+
+	ol, ul {
+		display: flex;
+
+		@media (max-width: 800px) {
+			flex-flow: column;
+			margin-left: 3.5rem;
+		}
+
+		@media (min-width: 800px) and (max-width: 1200px) {
+			flex-flow: row wrap;
+		}
+
+		@media (min-width: 800px) {
+			flex-flow: row wrap;
+		}
+
+		gap: 1em;
+		padding: 3em;
+
+		$step: 10rem;
+		padding-bottom: $step * 2;
+
+		li {
+			@include glass-white;
+			position: relative;
+
+			color: white;
+
+			flex: 1;
+			display: block;
+
+			--padding: 3rem;
+			padding: var(--padding);
+
+			@media (min-width: 800px) {
+				padding-right: 6em;
+			}
+
+			position: relative;
+			box-shadow: -1px -1px 16px #1112;
+
+			flex-basis: 40ch;
+			min-height: 20em;
+			margin-left: -3rem;
+
+			@media (max-width: 800px) {
+				--padding: 2rem;
+
+				&:nth-child(1) {}
+				&:nth-child(2) { margin-left: -40px; }
+				&:nth-child(3) { margin-left: -50px; }
+			}
+
+			@media (min-width: 800px) and (max-width: 1200px) {
+				&:nth-child(1) { top: $step * 0; margin-left: 0; }
+				&:nth-child(2) {
+					top: $step * 1;
+					padding-bottom: 6rem;
+				}
+
+				&:nth-child(3) {
+					flex: 0.75;
+					top: $step * 0.8 ;
+					// max-width: 400px;
+					margin-left: 15vw;
+				}
+			}
+
+			@media (min-width: 1200px) {
+				&:nth-child(1) { top: $step * 0; margin-left: 0; }
+				&:nth-child(2) { top: $step * 1; }
+				&:nth-child(3) { top: $step * 2; }
+			}
+
+			h3  {
+				position: relative;
+
+				color:          #afb;
+
+				padding: 1rem;
+				padding-left: min(4.5rem, 10vw);
+
+				left:  calc(-1 * var(--padding) - 2rem);
+				width: calc(100% + 2 * var(--padding) + 3rem);
+
+				@media (min-width: 800px) { 
+					width: calc(100% + 2 * var(--padding) + 6rem);
+				}
+
+				margin-bottom: 2rem;
+
+				background: #6668;
+				backdrop-filter: blur(10px);
+				box-shadow: -1px 1px 4px #1118;
+				font-style: italic;
+				font-size: 1.3em;
+			}
+
+			img {
+				display: block;
+				position: absolute;
+				right: 0.5rem;
+				top: -1rem;
+
+				width: min(8rem, 30vw);
+			}
+
+			p { font-size: 0.9rem; }
+		}
+	}
+}
+
+#packages {
+	@include panel-shadow;
+
+	width: 100%;
+	background: #dfe;
+	padding: 3em;
+	min-height: 100vh;
+
+	h2 {
+		background: #041;
+		color: white;
+		padding: 1em;
+		margin: -3rem;
+		margin-bottom: -3rem;
+		margin-bottom: 3rem;
+	}
+
+	.package {
+		margin: 0.75em 0;
+		border: 1px solid #888;
+		padding: 1.5em;
+		flex-basis: 40ch;
+		background: white;
+	}
+
+	.package-list {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		gap: 1em;
+	}
+
+	.see-all {
+		display: block;
+		width: auto;
+		text-align:center;
+		width: 100%;
+		margin: 0 auto;
+	}
+}
+
+#about {
+	// @include panel-shadow;
+	@include glass-white;
+	background: #fff0;
+	color: white;
+	width: min(40rem, 80%);
+	margin: 20vh auto;
+	padding: min(8vw, 4em);
+
+	h2 {
+		color: #4a2;
+	}
+}
+
+#contact {
+	// background: transparent;
+	background: white;
+	min-height: 80vh;
+
+	max-width: 800px;
+	width: 100%;
+
+	// margin: 10vw;
+	margin: 15vh auto;
+	margin-bottom: 40vh;
+
+	@include panel-shadow;
+	padding: 2em;
+
+	display: flex;
+	flex-direction: column;
+
+	h2 {
+		display: block;
+		width: 100%;
+		border-bottom: 2px solid #eee;
+	}
+
+	form {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
+
+		label {
+			margin-bottom: 0.15em;
+		}
+
+		input + label {
+			margin-top: 0.85em;
+		}
+
+		input[type='text'],
+		input[type='email'],
+		textarea {
+			padding:     0.5em;
+		}
+
+		textarea {
+			width:       100%;
+			min-width:   100%;
+			max-width:   100%;
+			font-family: inherit;
+			flex-grow:   1;
+		}
+
+		button {
+			width:      fit-content;
+			align-self: end;
+			margin-top: 0.75em;
+			padding:    0.25em;
+		}
+	}
+}

@@ -1,0 +1,56 @@
+---
+title: Packages
+layout:
+---
+
+{% extends 'base.njk' %}
+
+{% from 'packages.njk' import packagePanel %}
+
+{% block head %}
+  <style>
+    section { max-width: 50ch; margin: 0 auto; }
+    #packages > div {
+      border: 1px solid #ccc;
+      padding: 1em;
+      margin: 1em;
+    }
+    body > main { padding: 3em; }
+  </style>
+{% endblock %}
+
+{% extends "base.njk" %}
+
+{% block main %}
+  <section id="packages">
+    <h2>Packages</h2>
+
+    {{
+	    packagePanel(
+		    collections.packages
+		    | search('[?@.data.title == `Web Development and Service`] | [0].data'),
+	    3 )| safe
+    }}
+
+    {{
+	    packagePanel(
+		    collections.packages
+		    | search('[?@.data.title == `Consultation`] | [0].data'),
+	    3 )| safe
+    }}
+
+    {{
+	    packagePanel(
+		    collections.packages
+		    | search('[?@.data.title == `Budget Package`] | [0].data'),
+	    3 )| safe
+    }}
+
+    {{
+	    packagePanel(
+		    collections.packages
+		    | search('[?@.data.title == `Single-page site`] | [0].data'),
+	    3 )| safe
+    }}
+  </section>
+{% endblock %}

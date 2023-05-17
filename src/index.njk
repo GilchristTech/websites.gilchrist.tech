@@ -1,0 +1,163 @@
+---
+stylesheet: /index.css
+metaDescription: >
+  Custom websites for individuals and small business.
+---
+
+{% extends "base.njk" %}
+
+{% from 'packages.njk' import packagePanel %}
+
+{% block head %}
+	<meta rel="preload" as="image" href="/static/sameer-srivastava-M9kwG0fat3o-unsplash.webp">
+{% endblock %}
+
+{% block main %}
+	<section id="fold">
+		<div>
+			<h1 class="brand">
+				<span>Gilchrist</span>.<span>tech</span>
+			</h1>
+			<h2>Speedy custom websites with a helping hand</h2>
+			<p>Website builders like Wix and Squarespace only get you so far. Let's talk over the unique needs of your company website with a <a href="{{ site.links.contact | url }}">free one-hour consultation</a>.</p>
+
+			<span class="attribution">
+				Photo by <a href="https://unsplash.com/photos/M9kwG0fat3o">Sameer Srivastava</a> on <a href="https://unsplash.com">Unsplash</a>
+			</span>
+		</div>
+	</section>
+
+	<section id="how-it-works">
+		<div>
+			<h2>How it works</h2>
+			<p>It's not just about having website; putting yourself out there and
+			staying current sets you apart and brings new attention to your
+			company.</p>
+		</div>
+
+		<ol>
+			<li>
+				<h3>Strategy</h3>
+				<img src="static/285631_notepad_icon.svg" alt="">
+				<p>Let's talk about your business, determine the solution which fits
+				 best, and make a to move forward.</p>
+			</li>
+
+			<li>
+				<h3>Content</h3>
+				<img src="static/4698583_document_file_paper_pen_text_icon.svg" alt="">
+				<p>What do your clients need to know about what you do? What can we
+				show them to make you approachable, and your offers understandable?
+				After figuring out what kind of online project fits your brand, let's
+				work together to collect and present the information your clients need.
+				</p>
+			</li>
+
+			<li>
+				<h3>Execution</h3>
+				<img src="static/532712_application_browser_configuration_development_settings_icon.svg" alt="">
+				<p>Get online! From there, we see what lands with your clients, what
+				doesn't, and make changes to maximize sales. Expanding
+				your business?  Let's make sure your website follows you wherever your
+				journey takes you.</p>
+			</li>
+		</ol>
+	</section>
+
+	{#
+	<section id="portfolio">
+		<h2>Portfolio and Case Studies</h2>
+
+		<ul>
+			<li></li>
+		</ul>
+
+		{% if site.links.miniwebsites %}
+			<h3>Mini-websites</h3>
+			<p>In order to keep my skills sharp, and to produce
+			websites as fast as possible, I take time to commit the
+			code to sites to memory, practice typing them as quickly as
+			possible. These look like projects I make in a single
+			day, which I call mini-websites.</p>
+			<p><a href="{{ site.links.miniwebsites | url }}">The mini-websites can be browsed here</a></p>
+		{% endif %}
+	</section>
+	#}
+
+	<section id="packages">
+		<h2>Packages</h2>
+
+		<p>Several packages are available for individuals and small business.</p>
+
+		<div class="package-list">
+			{{
+				packagePanel(
+				collections.packages
+				| search('[?@.data.title == `Consultation`] | [0].data'),
+				3 )| safe
+			}}
+
+			{{
+				packagePanel(
+				collections.packages
+				| search('[?@.data.title == `Web Development and Service`] | [0].data'),
+				3 )| safe
+			}}
+
+			{{
+				packagePanel(
+				collections.packages
+				| search('[?@.data.title == `Budget Package`] | [0].data'),
+				3 )| safe
+			}}
+		</div>
+
+		<a class="see-all" href="{{ site.links.packages | url }}">See all packages</a>
+	</section>
+
+	<section id="about">
+		<h2>About me</h2>
+
+		<p>My name is Gilchrist Pitts, I'm a software engineer and web developer.
+		When I was a child, the first programming language I learned was a variant
+		of BASIC. Since then, I've been writing code, and this has led me to
+		become knowledgable in a broad range of technologies.</p>
+
+		<p>As a business, my focus is on delivering lean, punchy
+		websites for small businesses and individuals.</p>
+
+		{% if site.links.developer %}
+		<a class="btn" href="https://dev.gilchrist.tech/">My developer site</a>
+		{% endif %}
+	</section>
+
+	<section id="contact">
+		<h2>Get in touch</h2>
+		<form name="contact" netlify data-netlify-recaptcha="true">
+			<label for="name">Name:</label>
+			<input name="name" type="text" placeholder="Your name here"/>
+
+			<label for="email">Email address:</label>
+			<input name="email" type="email" placeholder="So that I can get back to you"/>
+
+			<label>Message</label>
+			<textarea name="message" placeholder="Tell me about what you need help with."></textarea>
+
+			<div data-netlify-recaptcha="true"></div>
+
+			<button type="submit">Send</button>
+		</form>
+	</section>
+{% endblock %}
+
+{% block copyright %}
+	<div style="font-size: 0.75em">
+		<p>This page uses assets by these creators:</p>
+		<ul>
+			<li><a href="https://www.iconfinder.com/paomedia">Paomedia</a></li>
+			<li><a href="https://www.iconfinder.com/MartaKonyk">Marta Konyk</a></li>
+			<li><a href="https://www.iconfinder.com/Vecteezy">Eezy</a></li>
+			<li><a href="https://unsplash.com/@sameer_srivastava">Sameer Srivastava</a></li>
+		</ul>
+	</div>
+{% endblock %}
